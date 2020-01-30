@@ -15,12 +15,25 @@ public:
 	void update(float dt);
 	void render();
 
+	
 private:
 	// Default functions for rendering to the screen.
 	void beginDraw();
 	void endDraw();
 
+
 	// Default variables for level class.
 	sf::RenderWindow* window;
 	Input* input;
+
+	// Objects
+	sf::CircleShape circle;
+	sf::RectangleShape rect;
+	float speed;
+
+	bool moveRight = true;
+	bool moveLeft = true;
+	bool moveUp = true;
+	bool moveDown = true;
+
 };
