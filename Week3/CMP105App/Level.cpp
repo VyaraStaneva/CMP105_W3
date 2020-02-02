@@ -8,9 +8,9 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	// initialise game objects
 
 	// Moving circle
-	circle.setRadius(30);
+	circle.setRadius(100);
 	circle.setPosition(300, 300);
-	circle.setFillColor(sf::Color::Yellow);
+	circle.setFillColor(sf::Color::Cyan);
 	circle.setOutlineColor(sf::Color::Black);
 	circle.setOutlineThickness(2.f);
 
@@ -50,7 +50,7 @@ void Level::update(float dt)
 		circle.move(-speed * dt, 0);
 	}
 
-	if (circle.getPosition().x >= window->getSize().x) {
+	if (circle.getPosition().x + circle.getRadius() >= window->getSize().x) {
 		moveRight = false;
 	}
 	else if (circle.getPosition().x <= 0) {
