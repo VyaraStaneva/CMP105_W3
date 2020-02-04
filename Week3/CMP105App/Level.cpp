@@ -32,11 +32,55 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
-	/*if (input->isKeyDown(sf::Keyboard::Up)) {
-		input->setKeyUp(sf::Keyboard::Up);
-		moveUp = true;
+	// Move Rectangle
+	if (input->isKeyDown(sf::Keyboard::Up)) {
+		if (moveUp) {
+			rect.move(0, -speed * dt);
+		}
+		else {
+			rect.move(0,0);
+		}
+
+		if (rect.getPosition().y <= 0) {
+			moveUp = false;
+		};
 	}
-	*/
+	else if (input->isKeyDown(sf::Keyboard::Down)) {
+		if (moveDown) {
+			rect.move(0, speed * dt);
+		}
+		else {
+			rect.move(0, 0);
+		}
+
+		if (rect.getPosition().y >= window->getSize().y) {
+			moveDown = false;
+		}
+	}
+	else if (input->isKeyDown(sf::Keyboard::Left)) {
+		if (moveLeft) {
+			rect.move(-speed * dt, 0);
+		}
+		else {
+			rect.move(0, 0);
+		}
+
+		if (rect.getPosition().x <= 0) {
+			moveLeft = false;
+		}
+	}
+	else if (input->isKeyDown(sf::Keyboard::Right)) {
+		if (moveRight) {
+			rect.move(speed * dt, 0);
+		}
+		else {
+			rect.move(0, 0);
+		}
+		if (rect.getPosition().x >= window->getSize().x) {
+			moveRight = false;
+		}
+	}
+	
 }
 
 // Update game objects
@@ -50,21 +94,12 @@ void Level::update(float dt)
 		circle.move(-speed * dt, 0);
 	}
 
-	if (circle.getPosition().x + circle.getRadius() >= window->getSize().x) {
+	if (circle.getPosition().x + circle.getRadius()*2 >= window->getSize().x) {
 		moveRight = false;
 	}
 	else if (circle.getPosition().x <= 0) {
 		moveRight = true;
 	}
-
-	/* Move Rectangle
-		if (moveUp) {
-			rect.move(0, speed * dt);
-		}
-		else {
-			rect.move(0, -speed * dt);
-		}
-		*/
 	
 }
 
