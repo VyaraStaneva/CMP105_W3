@@ -9,7 +9,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	// Moving circle
 	circle.setRadius(100);
-	circle.setPosition(300, 300);
+	circle.setPosition(400, 400);
 	circle.setFillColor(sf::Color::Cyan);
 	circle.setOutlineColor(sf::Color::Black);
 	circle.setOutlineThickness(2.f);
